@@ -19,3 +19,5 @@ Passo a passo:
 4 - De o comando: pip install -r .\requirements.txt 
 
 para instalar as dependências necessárias para rodar a api.
+
+5 - De o comando py .\manage.py runserver para rodá-lo
