@@ -2,12 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
-from .models import Cliente
-from .serializers import ClienteSerializer
+from rest_framework import status, generics
+from .models import Cliente, Produto, Categoria
+from .serializers import ClienteSerializer, ProdutoSerializer, CategoriaSerializer
 import json
 # Create your views here.
 
+
+class ProdutoLista(generics.ListCreateAPIView):
+    queryset = Produto.objects.all()
+    serializer_class = ProdutoSerializer
+
+class CategoriaLista(generics.ListCreateAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+
+# API ENTIDADE CLIENTE
 @api_view(['GET', 'PUT'])
 def get_clientes(request):
     #Este metodo pega todos os objetos clientes no banco de dados e serializa eles na classe serializer
